@@ -1,0 +1,36 @@
+package com.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class LoginPage {
+	@Test(priority = 1, groups = "smoke")
+
+	public void validateTitle() {
+		WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        //over here one tab is present
+        String parentWindow = driver.getWindowHandle();
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+        String mainWindowTitle = driver.getTitle();
+        System.out.println("Parent Window Title is: "+ mainWindowTitle);
+        String expectedTitle = "OrangeHRM";
+        Assert.assertEquals(mainWindowTitle, expectedTitle);
+
+	@Test(priority = 2, groups = "smoke")
+
+	public void validateLogin(String a, String b) {
+		WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        //over here one tab is present
+        String parentWindow = driver.getWindowHandle();
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+        driver.findElement(By.id("txtUsername")).sendKeys(a);
+	    driver.findElement(By.name("txtPassword")).sendKeys(b);
+		driver.findElement(By.xpath("//*[@id=\"btnLogin\"]")).click();
+	}
+}

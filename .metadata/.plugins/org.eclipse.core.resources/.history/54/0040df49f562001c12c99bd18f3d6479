@@ -1,0 +1,15 @@
+Feature: Orange HRM Login Feature
+
+
+
+Scenario: Testing Login feature of Orange HRM
+
+Given User is on Login Page
+
+When User enters username
+
+And User enters password
+
+And User clicks on Login Button
+
+Then User should be logged in successfully
